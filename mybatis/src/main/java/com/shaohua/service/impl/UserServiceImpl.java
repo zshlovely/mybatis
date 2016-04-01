@@ -1,9 +1,12 @@
 package com.shaohua.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.shaohua.dao.UserMapper;
 import com.shaohua.pojo.User;
 import com.shaohua.service.UserService;
 
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	public UserMapper userMapper;
@@ -13,7 +16,6 @@ public class UserServiceImpl implements UserService {
 		return userMapper;
 	}
 
-    @Autowired
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
 	}
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
 	public User getUserById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectByPrimaryKey(id);
 	}
 
 }
